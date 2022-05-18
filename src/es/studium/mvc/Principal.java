@@ -5,6 +5,6 @@ public class Principal
 	{
 		MenuPrincipal menuPrincipal = new MenuPrincipal();
 		Modelo modelo = new Modelo();
-		new Controlador = (menuPrincipal, modelo);
+		new Controlador(menuPrincipal, modelo);
 	}
 }
