@@ -8,7 +8,7 @@ public class Controlador implements WindowListener, ActionListener
 	MenuPrincipal principal;
 	Modelo modelo;
 	NuevaPartida nuevaPartida;
-	Ranking top10;
+	Ranking ranking;
 
 	public Controlador(MenuPrincipal p, Modelo m)
 	{
@@ -32,21 +32,26 @@ public class Controlador implements WindowListener, ActionListener
 			nuevaPartida = new NuevaPartida();
 			nuevaPartida.addWindowListener(this);
 		}
+		else if (evento.getSource().equals(principal.btnTop))
+		{
+			ranking = new Ranking();
+			ranking.addWindowListener(this);
+		}
 	}
 	@Override
 	public void windowOpened(WindowEvent e){}
 	@Override
 	public void windowClosing(WindowEvent evento)
 	{
-		if(nuevaPartida!=null)
+		if(nuevaPartida!=null || ranking!=null)
 		{
 			if(nuevaPartida.isActive())
 			{
-				principal.setVisible(true);
+				nuevaPartida.setVisible(false);
 			}
-			else if (evento.getSource().equals(principal.btnTop))
+			else if(ranking.isActive())
 			{
-				top10 = new Ranking();
+				ranking.setVisible(false);
 			}
 			else
 			{
