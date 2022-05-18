@@ -4,9 +4,10 @@ public class Principal
 	public static void main(String[] args)
 	
 	{
-		new Ranking();
-		//MenuPrincipal menuPrincipal = new MenuPrincipal();
-		//Modelo modelo = new modelo();
-		//new Controlador = (menuPrincipal, modelo);
+
+		MenuPrincipal menuPrincipal = new MenuPrincipal();
+		Modelo modelo = new Modelo();
+		new Controlador = (menuPrincipal, modelo);
+
 	}
 }
