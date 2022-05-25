@@ -17,7 +17,7 @@ public class MenuPrincipal extends Frame
 	{
 		//Configuración Pantalla
 		setSize(300, 220); // Tamaño: Ancho x Alto
-		//setResizable(false); // No permitir redimensión
+		setResizable(false); // No permitir redimensión
 		setLayout(new GridLayout(5,1));
 		
 		setBackground(new Color(255, 255, 153));

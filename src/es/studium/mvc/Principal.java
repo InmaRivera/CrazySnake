@@ -5,10 +5,9 @@ public class Principal
 	
 	{
 
-		new Tablero ();
-		//MenuPrincipal menuPrincipal = new MenuPrincipal();
-		//Modelo modelo = new Modelo();
-		//new Controlador = (menuPrincipal, modelo);
+		MenuPrincipal menuPrincipal = new MenuPrincipal();
+		Modelo modelo = new Modelo();
+		new Controlador(menuPrincipal, modelo);
 
 	}
 }
