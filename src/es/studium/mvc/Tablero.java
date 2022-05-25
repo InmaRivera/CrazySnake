@@ -1,23 +1,14 @@
 package es.studium.mvc;
-
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.FlowLayout;
 import java.awt.Frame;
 import java.awt.Graphics;
-import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.Panel;
 import java.awt.TextField;
 import java.awt.Toolkit;
-
-import org.w3c.dom.Text;
-
 public class Tablero extends Frame {
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	//setBackground(Color.black);
 	Frame ventana= new Frame ("Tablero");

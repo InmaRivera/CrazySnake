@@ -10,7 +10,7 @@ import java.awt.Toolkit;
 public class NuevaPartida extends Frame
 {
 	private static final long serialVersionUID = 1L;
-	Label lblNombre = new Label("         Introduzca su nombre: ");
+	Label lblNombre = new Label("Introduzca su nombre: ", 1);
 	TextField txtNombre = new TextField(20);
 	Button btnNueva = new Button("Aceptar");
 	Image imagen;

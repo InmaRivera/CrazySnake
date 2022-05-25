@@ -43,15 +43,17 @@ public class Controlador implements WindowListener, ActionListener
 	@Override
 	public void windowClosing(WindowEvent evento)
 	{
-		if(nuevaPartida!=null || ranking!=null)
+		if(nuevaPartida!=null && ranking!=null)
 		{
 			if(nuevaPartida.isActive())
 			{
+				principal.setVisible(true);
 				nuevaPartida.setVisible(false);
 			}
 			else if(ranking.isActive())
 			{
-				ranking.setVisible(false);
+				principal.setVisible(true);
+				ranking.setVisible(false);	
 			}
 			else
 			{

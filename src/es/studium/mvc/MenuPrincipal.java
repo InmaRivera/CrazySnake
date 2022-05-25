@@ -4,14 +4,16 @@ import java.awt.Color;
 import java.awt.Frame;
 import java.awt.GridLayout;
 import java.awt.Label;
+import java.awt.Panel;
 public class MenuPrincipal extends Frame
 {
 	private static final long serialVersionUID = 1L;
-	Label lblMenu = new Label ("                                 Menú principal");
+	Label lblMenu = new Label ("Menú principal", 1);
 	Button btnPartida = new Button("Empezar partida");
 	Button btnTop = new Button("Top 10");
 	Button btnAyuda= new Button("Ayuda");// btnExit
 	Button btnExit= new Button("Exit");
+	Panel pnlSalir = new Panel();
 
 	public MenuPrincipal()
 	{
@@ -26,7 +28,9 @@ public class MenuPrincipal extends Frame
 		add(btnPartida);
 		add(btnTop);
 		add(btnAyuda);
-		add(btnExit);
+		
+		pnlSalir.add(btnExit);
+		add("South", pnlSalir);
 		
 		setVisible(true);
 		setSize(299, 246); // En pixeles Width, Height. Ir probando y cambiando anchura y altura

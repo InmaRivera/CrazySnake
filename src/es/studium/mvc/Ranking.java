@@ -10,8 +10,8 @@ public class Ranking extends Frame
 {
 	private static final long serialVersionUID = 1L;
 	//alto*ancho
-	Label lblTop = new Label("              Lista 10 personas                                                                ");
-	TextArea txtSnake= new TextArea(20, 30);
+	Label lblTop = new Label("                           		 Lista 10 personas                                            ");
+	TextArea txtSnake= new TextArea(15, 30);
 	// Declarar el objeto Image
 	Image imagen;
 	// Declarar el objeto Toolkit para manejo de imágenes
