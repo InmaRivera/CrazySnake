@@ -9,6 +9,8 @@ public class Controlador implements WindowListener, ActionListener
 	Modelo modelo;
 	NuevaPartida nuevaPartida;
 	Ranking ranking;
+	Tablero tablero;
+
 
 	public Controlador(MenuPrincipal p, Modelo m)
 	{
@@ -19,6 +21,7 @@ public class Controlador implements WindowListener, ActionListener
 		principal.btnTop.addActionListener(this);
 		principal.btnAyuda.addActionListener(this);
 		principal.btnExit.addActionListener(this);
+
 	}
 	@Override
 	public void actionPerformed(ActionEvent evento)
@@ -31,6 +34,13 @@ public class Controlador implements WindowListener, ActionListener
 		{
 			nuevaPartida = new NuevaPartida();
 			nuevaPartida.addWindowListener(this);
+			nuevaPartida.btnNueva.addActionListener(this);
+		}
+		else if (evento.getSource().equals(nuevaPartida.btnNueva))
+		{
+			//Función de los botones del Tablero
+			Tablero tablero = new Tablero();
+			tablero.addWindowListener(this);
 		}
 		else if (evento.getSource().equals(principal.btnTop))
 		{
@@ -43,17 +53,20 @@ public class Controlador implements WindowListener, ActionListener
 	@Override
 	public void windowClosing(WindowEvent evento)
 	{
-		if(nuevaPartida!=null && ranking!=null)
+		//Indicamos cuando cerrar las ventanas
+		if(nuevaPartida!=null || ranking==null)
 		{
 			if(nuevaPartida.isActive())
 			{
-				principal.setVisible(true);
 				nuevaPartida.setVisible(false);
 			}
 			else if(ranking.isActive())
 			{
-				principal.setVisible(true);
-				ranking.setVisible(false);	
+				ranking.setVisible(false);
+			}
+			else if(tablero.isActive())
+			{
+				tablero.setVisible(false);
 			}
 			else
 			{

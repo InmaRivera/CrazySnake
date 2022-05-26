@@ -21,17 +21,17 @@ public class NuevaPartida extends Frame
 	{
 		//Configuración Pantalla
 		setSize(200, 150); // Tamaño: Ancho x Alto
-		//setResizable(false); // No permitir redimensión
+		setResizable(false); // No permitir redimensión
 		setLayout(new FlowLayout()); 
 		herramienta = getToolkit();
 		// Especificar la ruta de la imagen
 		imagen = herramienta.getImage("img\\snake.jpg");
-		
+
 		setTitle("Nueva Partida");
 		add(lblNombre);
 		add(txtNombre);
 		add(btnNueva);
-			
+
 		setLocationRelativeTo(null); // Centrar
 		setVisible(true); // Mostrarla
 		setVisible(true);// En pixeles Width, Height. Ir probando y cambiando anchura y altura
@@ -42,4 +42,5 @@ public class NuevaPartida extends Frame
 		// Dibujar la imagen
 		g.drawImage(imagen,4,23,this);
 	}
+
 }
