@@ -10,9 +10,10 @@ import java.awt.Toolkit;
 public class NuevaPartida extends Frame
 {
 	private static final long serialVersionUID = 1L;
+	//Creamos objeto para introducir nombre:
 	Label lblNombre = new Label("Introduzca su nombre: ", 1);
-	TextField txtNombre = new TextField(20);
-	Button btnNueva = new Button("Aceptar");
+	TextField txtNombre = new TextField(10);
+	Button btnAceptar = new Button("Aceptar");
 	Image imagen;
 	// Declarar el objeto Toolkit para manejo de imágenes
 	Toolkit herramienta;
@@ -30,12 +31,19 @@ public class NuevaPartida extends Frame
 		setTitle("Nueva Partida");
 		add(lblNombre);
 		add(txtNombre);
-		add(btnNueva);
-
+		add(btnAceptar);
 		setLocationRelativeTo(null); // Centrar
-		setVisible(true); // Mostrarla
-		setVisible(true);// En pixeles Width, Height. Ir probando y cambiando anchura y altura
-		setLocationRelativeTo(null); // Centrar
+	}
+	public void mostrarNuevaPartida()
+	{
+		//mostrar la ventana aquí que aparezca cuando indiquemos(al pulsar botón de nueva partida)
+		setVisible(true);		
+	}
+	
+	public void ocultarNuevaPartida()
+	{
+		//ocultarla
+		setVisible(false);		
 	}
 	public void paint(Graphics g)
 	{

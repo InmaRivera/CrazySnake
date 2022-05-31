@@ -7,10 +7,10 @@ public class Controlador implements WindowListener, ActionListener
 {
 	MenuPrincipal principal;
 	Modelo modelo;
-	NuevaPartida nuevaPartida;
-	Ranking ranking;
-	Tablero tablero;
-
+	NuevaPartida nuevaPartida = new NuevaPartida();
+	Ranking ranking = new Ranking();
+	Tablero tablero = new Tablero();
+	int cerrar = 0;
 
 	public Controlador(MenuPrincipal p, Modelo m)
 	{
@@ -21,6 +21,10 @@ public class Controlador implements WindowListener, ActionListener
 		principal.btnTop.addActionListener(this);
 		principal.btnAyuda.addActionListener(this);
 		principal.btnExit.addActionListener(this);
+		nuevaPartida.btnAceptar.addActionListener(this);
+		ranking.addWindowListener(this);
+		tablero.addWindowListener(this);
+		nuevaPartida.addWindowListener(this);
 
 	}
 	@Override
@@ -32,20 +36,25 @@ public class Controlador implements WindowListener, ActionListener
 		}
 		else if(evento.getSource().equals(principal.btnPartida))
 		{
-			nuevaPartida = new NuevaPartida();
-			nuevaPartida.addWindowListener(this);
-			nuevaPartida.btnNueva.addActionListener(this);
+			//Función de los botones del Tablero
+			nuevaPartida.mostrarNuevaPartida();
+			cerrar =1;
 		}
-		else if (evento.getSource().equals(nuevaPartida.btnNueva))
+		else if(evento.getSource().equals(nuevaPartida.btnAceptar))
 		{
 			//Función de los botones del Tablero
-			Tablero tablero = new Tablero();
-			tablero.addWindowListener(this);
+			tablero.mostrarTablero();
+			cerrar =1;
 		}
 		else if (evento.getSource().equals(principal.btnTop))
 		{
-			ranking = new Ranking();
-			ranking.addWindowListener(this);
+			ranking.mostrarRanking();
+			cerrar = 1;
+		}
+		else if (evento.getSource().equals(principal.btnAyuda))
+		{
+			//Ayuda.mostrarRanking();
+			cerrar = 1;
 		}
 	}
 	@Override
@@ -54,25 +63,24 @@ public class Controlador implements WindowListener, ActionListener
 	public void windowClosing(WindowEvent evento)
 	{
 		//Indicamos cuando cerrar las ventanas
-		if(nuevaPartida!=null || ranking==null)
+		if(cerrar == 1)
 		{
-			if(nuevaPartida.isActive())
-			{
-				nuevaPartida.setVisible(false);
-			}
-			else if(ranking.isActive())
-			{
-				ranking.setVisible(false);
-			}
-			else if(tablero.isActive())
-			{
-				tablero.setVisible(false);
-			}
-			else
-			{
-				System.exit(0);
-			}
+			//ocultar ranking
+			ranking.ocultarRanking();
 		}
+		else if(cerrar == 1)
+		{
+			//Se cierra pantalla de nueva partida
+			//NO SE CIERRA
+			nuevaPartida.ocultarNuevaPartida();
+		}
+		else if(cerrar == 1)
+		{
+			//se cierra ventana de juego
+			//PROBLEMA NO SE CIERRA
+			tablero.ocultarTablero();
+		}
+
 		else
 		{
 			System.exit(0);

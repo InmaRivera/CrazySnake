@@ -62,7 +62,17 @@ public class Tablero extends Frame {
 		panel.setSize(40, 560);
 		//Agregamos panel.
 		add(panel);
-		setVisible(true);//mostrar la ventana
+		
+	}
+	public void mostrarTablero()
+	{//mostrar la ventana
+		setVisible(true);		
+	}
+	
+	public void ocultarTablero()
+	{
+		//ocultarla
+		setVisible(false);		
 	}
 
 	public void paint(Graphics g)

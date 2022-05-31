@@ -33,7 +33,6 @@ public class MenuPrincipal extends Frame
 		add("South", pnlSalir);
 		
 		setVisible(true);
-		setSize(299, 246); // En pixeles Width, Height. Ir probando y cambiando anchura y altura
 		setLocationRelativeTo(null); // Centrar
 	}
 }
