@@ -21,18 +21,24 @@ public class MenuPrincipal extends Frame
 		setSize(300, 220); // Tamaño: Ancho x Alto
 		setResizable(false); // No permitir redimensión
 		setLayout(new GridLayout(5,1));
-		
+
 		setBackground(new Color(255, 255, 153));
 		setTitle("Menú Principal");
 		add(lblMenu);
 		add(btnPartida);
 		add(btnTop);
 		add(btnAyuda);
-		
+
 		pnlSalir.add(btnExit);
 		add("South", pnlSalir);
-		
+
 		setVisible(true);
 		setLocationRelativeTo(null); // Centrar
+	}
+
+	public void ocultarMenuPrincipal()
+	{
+		System.exit(0);
+		setVisible(false);		
 	}
 }
