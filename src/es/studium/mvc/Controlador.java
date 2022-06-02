@@ -3,6 +3,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.io.IOException;
 public class Controlador implements WindowListener, ActionListener
 {
 	MenuPrincipal menuPrincipal;
@@ -58,6 +59,16 @@ public class Controlador implements WindowListener, ActionListener
 		{
 			//Ayuda.mostrarRanking();
 			cerrar = 2;
+
+			try {
+				Runtime.getRuntime().exec("hh.exe AyudaJuego.chm");
+			}
+			
+			catch (IOException e)
+			{
+				e.printStackTrace();
+			}
+			cerrar = 1;
 		}
 	}
 	@Override
@@ -86,8 +97,7 @@ public class Controlador implements WindowListener, ActionListener
 		{
 			//ocultar ranking
 			ranking.ocultarRanking();
-		}
-		
+		}		
 		/*if(cerrar = 2)
 		{
 			Ayuda.ocultarAyda();
