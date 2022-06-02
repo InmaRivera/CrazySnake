@@ -33,29 +33,31 @@ public class Controlador implements WindowListener, ActionListener
 	{
 		if(evento.getSource().equals(menuPrincipal.btnExit))
 		{
-			menuPrincipal.setVisible(false);
+			//Se cierra menu principal
+			menuPrincipal.ocultarMenuPrincipal();
+			cerrar = 1;
 		}
 		else if(evento.getSource().equals(menuPrincipal.btnPartida))
 		{
-			//Función de los botones del Tablero
+			//Se abre pantalla nueva partida (introducir nombre)
 			nuevaPartida.mostrarNuevaPartida();
-			cerrar =1;
+			cerrar = 2;
 		}
 		else if(evento.getSource().equals(nuevaPartida.btnAceptar))
 		{
 			//Función de los botones del Tablero
 			tablero.mostrarTablero();
-			cerrar =1;
+			cerrar = 2;
 		}
 		else if (evento.getSource().equals(menuPrincipal.btnTop))
 		{
 			ranking.mostrarRanking();
-			cerrar = 1;
+			cerrar = 2;
 		}
 		else if (evento.getSource().equals(menuPrincipal.btnAyuda))
 		{
 			//Ayuda.mostrarRanking();
-			cerrar = 1;
+			cerrar = 2;
 		}
 	}
 	@Override
@@ -64,24 +66,37 @@ public class Controlador implements WindowListener, ActionListener
 	public void windowClosing(WindowEvent evento)
 	{
 		//Indicamos cuando cerrar las ventanas
-		 if(cerrar == 1)
+		if ((cerrar == 1) && (menuPrincipal.isActive()))
+		{
+			//sigue sin cerrarse
+			menuPrincipal.setVisible(false);
+			menuPrincipal.ocultarMenuPrincipal();
+		}
+		 if(cerrar == 2)
 		{
 			//Se cierra pantalla de nueva partida
 			nuevaPartida.ocultarNuevaPartida();
 		}
-		 if(cerrar == 1)
+		 if(cerrar == 2)
 		{
 			//se cierra ventana de juego
-			tablero.ocultarTablero();
+			tablero.ocultarTablero();			
 		}
-		if(cerrar == 1)
+		if(cerrar == 2)
 		{
 			//ocultar ranking
 			ranking.ocultarRanking();
 		}
-		else
+		
+		/*if(cerrar = 2)
 		{
-			//Menu principal no se cierra si abro demás ventanas, solo con Exit
+			Ayuda.ocultarAyda();
+		}*/
+		else 
+		{
+			cerrar = 1;
+			menuPrincipal.setVisible(false);
+			menuPrincipal.ocultarMenuPrincipal();	
 			System.exit(0);
 		}
 	}
