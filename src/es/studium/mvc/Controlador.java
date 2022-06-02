@@ -103,11 +103,10 @@ public class Controlador implements WindowListener, ActionListener
 			Ayuda.ocultarAyda();
 		}*/
 		else 
-		{
-			cerrar = 1;
-			menuPrincipal.setVisible(false);
-			menuPrincipal.ocultarMenuPrincipal();	
-			System.exit(0);
+		{	
+			//1 para cerrar Menú principal después de usar las demás ventanas
+			//Conseguido
+			System.exit(1);
 		}
 	}
 	@Override
