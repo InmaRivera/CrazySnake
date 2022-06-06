@@ -1,10 +1,14 @@
 package es.studium.mvc;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.io.IOException;
-public class Controlador implements WindowListener, ActionListener
+
+public class Controlador implements WindowListener, ActionListener, KeyListener
 {
 	MenuPrincipal menuPrincipal;
 	Modelo modelo;
@@ -26,6 +30,7 @@ public class Controlador implements WindowListener, ActionListener
 		nuevaPartida.btnAceptar.addActionListener(this);
 		ranking.addWindowListener(this);
 		tablero.addWindowListener(this);
+		tablero.addKeyListener(this);
 		nuevaPartida.addWindowListener(this);
 
 	}
@@ -36,7 +41,7 @@ public class Controlador implements WindowListener, ActionListener
 		{
 			//Se cierra menu principal
 			menuPrincipal.ocultarMenuPrincipal();
-			cerrar = 1;
+		
 		}
 		else if(evento.getSource().equals(menuPrincipal.btnPartida))
 		{
@@ -57,7 +62,7 @@ public class Controlador implements WindowListener, ActionListener
 		}
 		else if (evento.getSource().equals(menuPrincipal.btnAyuda))
 		{
-			//Ayuda.mostrarRanking();
+			//Ayuda.mostrarAyuda();
 			cerrar = 2;
 
 			try {
@@ -68,8 +73,66 @@ public class Controlador implements WindowListener, ActionListener
 			{
 				e.printStackTrace();
 			}
-			cerrar = 1;
 		}
+		else 
+		{
+			System.exit(1);
+		}
+	}
+	@Override
+	public void keyPressed(KeyEvent ke)
+	{
+		//Funcionalidad serpiente
+		if(ke.getKeyCode()==37)
+		{
+			tablero.posX--;
+			// Obtenemos una nueva posición del cuadrado
+	
+			if(tablero.posX>=9)
+			{
+				tablero.posX--;
+			}
+		}
+		// Pulsamos cursor arriba
+		else if(ke.getKeyCode()==38)
+		{
+			if(tablero.posY>=32)
+			{
+				tablero.posY--;
+			}
+		}
+		// Pulsamos cursor derecha
+		else if(ke.getKeyCode()==39)
+		{
+
+			if(tablero.posX<=270)
+			{
+				tablero.posX++;
+			}
+		}
+		// Pulsamos cursor abajo
+		else if(ke.getKeyCode()==40)
+		{
+			if(tablero.posY<=175)
+			{
+				tablero.posY++;
+			}
+		}
+		// Comprobamos si las coordenadas del ratón están entre las del cuadrado
+		if((tablero.posX<=tablero.posXman)&&(tablero.posXman<=tablero.posX+20)&&(tablero.posY<=tablero.posYman)&&(tablero.posYman<=tablero.posY+20))
+		{
+			//vidas++;
+			tablero.puntos ++;
+			
+			//tablero.area.setText(tablero.area.getText() + " ");
+			System.out.print("Acertaste!!!!");
+			System.out.println("Llevas " + tablero.puntos + " puntos.");
+			tablero.obtenerPosicionManzana();
+			tablero.dimension +=10;
+			
+		}
+		tablero.repaint(); // --> update() --> paint()
+		
 	}
 	@Override
 	public void windowOpened(WindowEvent e){}
@@ -79,8 +142,7 @@ public class Controlador implements WindowListener, ActionListener
 		//Indicamos cuando cerrar las ventanas
 		if ((cerrar == 1) && (menuPrincipal.isActive()))
 		{
-			//sigue sin cerrarse
-			menuPrincipal.setVisible(false);
+			//Para salir de menu principal
 			menuPrincipal.ocultarMenuPrincipal();
 		}
 		 if(cerrar == 2)
@@ -119,4 +181,17 @@ public class Controlador implements WindowListener, ActionListener
 	public void windowActivated(WindowEvent e){}
 	@Override
 	public void windowDeactivated(WindowEvent e) {}
+	@Override
+	public void keyTyped(KeyEvent e)
+	{
+		// TODO Auto-generated method stub
+		
+	}
+	
+	@Override
+	public void keyReleased(KeyEvent e)
+	{
+		// TODO Auto-generated method stub
+		
+	}
 }

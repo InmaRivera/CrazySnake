@@ -1,10 +1,12 @@
 package es.studium.mvc;
+
 import java.awt.Button;
 import java.awt.Color;
 import java.awt.Frame;
 import java.awt.GridLayout;
 import java.awt.Label;
 import java.awt.Panel;
+
 public class MenuPrincipal extends Frame
 {
 	private static final long serialVersionUID = 1L;
@@ -32,13 +34,13 @@ public class MenuPrincipal extends Frame
 		pnlSalir.add(btnExit);
 		add("South", pnlSalir);
 
-		setVisible(true);
 		setLocationRelativeTo(null); // Centrar
+		setVisible(true);
 	}
 
 	public void ocultarMenuPrincipal()
 	{
-		System.exit(0);
-		setVisible(false);		
+		//setVisible(false);
+		System.exit(1);
 	}
 }
