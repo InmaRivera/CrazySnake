@@ -1,0 +1,47 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<HTML>
+<HEAD>
+<meta name="GENERATOR" content="Microsoft&reg; HTML Help Workshop 4.1">
+<!-- Sitemap 1.0 -->
+</HEAD><BODY>
+<OBJECT type="text/site properties">
+	<param name="ImageType" value="Folder">
+</OBJECT>
+<UL>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Indice">
+		<param name="Local" value="INDICE-1.html">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Contenidos">
+		<param name="Local" value="MenúPrincipalAyuda-1.html">
+		<param name="Local" value="NuevaPartidaAyuda.html">
+		<param name="Local" value="AyudaAyuda.html">
+		<param name="Local" value="NuevaPartidaAyuda.html">
+		<param name="Local" value="TopdiezAyuda.html">
+		<param name="Local" value="VentanaDeJuegoAyuda.html">
+		</OBJECT>
+	<UL>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Venta de juego">
+			<param name="Local" value="VentanaDeJuegoAyuda.html">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Top diez">
+			<param name="Local" value="TopdiezAyuda.html">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Nueva partida">
+			<param name="Local" value="NuevaPartidaAyuda.html">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Menu Principal">
+			<param name="Local" value="MenúPrincipalAyuda-1.html">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Ayuda">
+			<param name="Local" value="AyudaAyuda.html">
+			</OBJECT>
+	</UL>
+</UL>
+</BODY></HTML>

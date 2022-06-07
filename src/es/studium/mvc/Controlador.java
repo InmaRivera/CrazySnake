@@ -66,7 +66,7 @@ public class Controlador implements WindowListener, ActionListener, KeyListener
 			cerrar = 2;
 
 			try {
-				Runtime.getRuntime().exec("hh.exe AyudaJuego.chm");
+				Runtime.getRuntime().exec("hh.exe ficheroAyuda.chm");
 			}
 			
 			catch (IOException e)
