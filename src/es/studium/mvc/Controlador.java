@@ -82,44 +82,47 @@ public class Controlador implements WindowListener, ActionListener, KeyListener
 	@Override
 	public void keyPressed(KeyEvent ke)
 	{
-		//Funcionalidad serpiente
-		if(ke.getKeyCode()==37)
+		
+		//Funcionalidad serpiente 
+		//Si pulsamos a la izquierda
+		if(ke.getKeyCode()==37)//37 tecla izquierda
 		{
-			tablero.posX--;
-			// Obtenemos una nueva posición del cuadrado
-	
-			if(tablero.posX>=9)
+			tablero.posXser--;
+			//Indicamos 
+			if(tablero.posXser>=-800)
 			{
-				tablero.posX--;
+				tablero.posXser--;
 			}
 		}
 		// Pulsamos cursor arriba
-		else if(ke.getKeyCode()==38)
+		else if(ke.getKeyCode()==38)//tecla arriba
 		{
-			if(tablero.posY>=32)
+			//indicamos hasta donde llegar serpiente para no salir del tablero arriba, que quede por debajo del panel
+			if(tablero.posYser>=70)
 			{
-				tablero.posY--;
+				tablero.posYser--;
 			}
 		}
 		// Pulsamos cursor derecha
 		else if(ke.getKeyCode()==39)
 		{
-
-			if(tablero.posX<=270)
+			//indicamos hasta donde llegar serpiente para no salir del tablero derecha
+			if(tablero.posXser<=680)
 			{
-				tablero.posX++;
+				tablero.posXser++;
 			}
 		}
 		// Pulsamos cursor abajo
 		else if(ke.getKeyCode()==40)
 		{
-			if(tablero.posY<=175)
+			//indicamos hasta donde llegar serpiente para no salir del tablero abajo
+			if(tablero.posYser<=580)
 			{
-				tablero.posY++;
+				tablero.posYser++;
 			}
 		}
 		// Comprobamos si las coordenadas del ratón están entre las del cuadrado
-		if((tablero.posX<=tablero.posXman)&&(tablero.posXman<=tablero.posX+20)&&(tablero.posY<=tablero.posYman)&&(tablero.posYman<=tablero.posY+20))
+		if((tablero.posXser<=tablero.posXman)&&(tablero.posXman<=tablero.posXser+10)&&(tablero.posYser<=tablero.posYman)&&(tablero.posYman<=tablero.posYser+10))
 		{
 			//vidas++;
 			tablero.puntos ++;
@@ -127,10 +130,13 @@ public class Controlador implements WindowListener, ActionListener, KeyListener
 			//tablero.area.setText(tablero.area.getText() + " ");
 			System.out.print("Acertaste!!!!");
 			System.out.println("Llevas " + tablero.puntos + " puntos.");
+			//cambiamos la manzana de posición
 			tablero.obtenerPosicionManzana();
+			//Aumentamos la serpiente cuando come una manzana
 			tablero.dimension +=10;
 			
 		}
+		//Volvemos a pintar
 		tablero.repaint(); // --> update() --> paint()
 		
 	}
@@ -144,6 +150,7 @@ public class Controlador implements WindowListener, ActionListener, KeyListener
 		{
 			//Para salir de menu principal
 			menuPrincipal.ocultarMenuPrincipal();
+			cerrar = 1;
 		}
 		 if(cerrar == 2)
 		{

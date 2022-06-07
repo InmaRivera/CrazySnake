@@ -23,8 +23,8 @@ public class Tablero extends Frame
 	Label img2 = new Label("                                                                                                                                                       ");
 	Label img3 = new Label(" ");
 	Toolkit herramienta;
-	// Las coordenadas del cuadrado
-	int posX, posY;
+	// Las coordenadas de la serpiente
+	int posXser, posYser;
 	//El tamaño
 	int dimension;
 	// Las coordenadas del lugar donde pulse
@@ -37,7 +37,9 @@ public class Tablero extends Frame
 	Font font = new Font("Colonna MT", Font.TRUETYPE_FONT, 20);
 	//coordenadas de manzana
 	int posXman, posYman;
-
+	//coordenadas de las letras
+	int posX, posY;
+	//random para la manzana
 	Random rnd = new Random();
 
 	//Controlador
@@ -45,7 +47,7 @@ public class Tablero extends Frame
 	{    
 		//Damos estilo a la ventana
 		setLayout(new FlowLayout());
-		setSize(700, 600); // Ancho y altura
+		setSize(700, 600); // Ancho x alto
 		setResizable(false);// no permitir redimensionar
 		setBackground(Color.black);
 		setLocationRelativeTo(null);//fijar que la ventana salga
@@ -53,15 +55,16 @@ public class Tablero extends Frame
 		Panel panel= new Panel();
 		panel.setLayout(new FlowLayout());
 		
-		//posición inicial
-		posX = 150;
-		posY = 150;
+		//posición inicial serpiente
+		posXser = 350;
+		posYser = 360;
 		//tamaño inicial serpiente
 		dimension = 10;
-
+		//Obtenemos la posición aleatoria de las manzanas
+		obtenerPosicionManzana();
 		panel.add(img);
 		panel.add(area);
-		
+		//mostramos el panel
 		panel.add(img2);
 		panel.add(area2);
 		panel.add(img3);
@@ -73,7 +76,7 @@ public class Tablero extends Frame
 		imagen = herramienta.getImage("img\\Captura3.PNG");
 		imagen2 = herramienta.getImage("img\\Captura.PNG");
 		
-		area.setEnabled(false);
+		area.setEnabled(false);//Para que no se pueda escribir
 		area2.setEnabled(false);
 		panel.setBackground(Color.CYAN);
 		panel.setSize(40, 560);
@@ -83,8 +86,9 @@ public class Tablero extends Frame
 	}
 	public void obtenerPosicionManzana()
 	{
-		posXman = rnd.nextInt(650)+60;
-		posYman = rnd.nextInt(550)+60;
+		//indicamos posicion manzanas
+		posXman = rnd.nextInt(530)+70;
+		posYman = rnd.nextInt(430)+70;
 	}
 	public void mostrarTablero()
 	{//mostrar la ventana
@@ -99,23 +103,24 @@ public class Tablero extends Frame
 
 	public void paint(Graphics g)
 	{
-		//posicionar la imagen
-//		g.drawRect(posX, posY, dimension, dimension);
-//		g.setFont(font);
-//		g.setColor(Color.black);
+		//posicionar letras de puntos y vidas
+		g.drawRect(posX, posY, 20, 20);
+		g.setFont(font);
+		//Damos color a las letras y posicion
+		g.setColor(Color.green);
+		g.drawString("Puntos: " + puntos, 10, 38);
+		g.drawString ("Vidas: " + vidas, 550, 38);
+		
 		// Dibujar la imagen
 		g.drawImage(imagen ,660,36,this);
 		g.drawImage(imagen2,6,36,this);
+		
 		//Damos color primero a serpiente
 		g.setColor(new Color(19,119,61));
 		//creamos el rectángulo para serpiente
-		g.fillRect(posX, posY, dimension, 10);
-		//letras de puntos y vidas
-		g.setColor(Color.green);
-		g.drawString("Puntos: " + puntos, 40, 50);
-		g.drawString ("Vidas: " + vidas, 550, 50);
+		g.fillRect(posXser, posYser, dimension, 10);
 		
-		//creamos el rectángulo de manzana
+		//creamos el circulo de manzana y le damos tamaño
 		g.setColor(Color.red);
 		g.fillOval(posXman, posYman, 10, 10);
 
