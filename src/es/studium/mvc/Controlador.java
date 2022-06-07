@@ -127,7 +127,8 @@ public class Controlador implements WindowListener, ActionListener, KeyListener
 			//vidas++;
 			tablero.puntos ++;
 			
-			//tablero.area.setText(tablero.area.getText() + " ");
+			tablero.area.setText("Puntos: " + tablero.puntos);
+			tablero.area2.setText("Vidas: " + tablero.vidas);
 			System.out.print("Acertaste!!!!");
 			System.out.println("Llevas " + tablero.puntos + " puntos.");
 			//cambiamos la manzana de posición

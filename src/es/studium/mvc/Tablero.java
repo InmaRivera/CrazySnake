@@ -63,10 +63,15 @@ public class Tablero extends Frame
 		//Obtenemos la posición aleatoria de las manzanas
 		obtenerPosicionManzana();
 		panel.add(img);
+		
 		panel.add(area);
+		//Para mostrar los puntos en el txtArea
+		area.setText("Puntos: " + puntos);
 		//mostramos el panel
 		panel.add(img2);
 		panel.add(area2);
+		//Para mostrar las vidas en el txtArea
+		area2.setText("Vidas: " + vidas);
 		panel.add(img3);
 		
 
@@ -106,10 +111,10 @@ public class Tablero extends Frame
 		//posicionar letras de puntos y vidas
 		g.drawRect(posX, posY, 20, 20);
 		g.setFont(font);
-		//Damos color a las letras y posicion
+		/*Damos color a las letras y posicion
 		g.setColor(Color.green);
 		g.drawString("Puntos: " + puntos, 10, 38);
-		g.drawString ("Vidas: " + vidas, 550, 38);
+		g.drawString ("Vidas: " + vidas, 550, 38);*/
 		
 		// Dibujar la imagen
 		g.drawImage(imagen ,660,36,this);
