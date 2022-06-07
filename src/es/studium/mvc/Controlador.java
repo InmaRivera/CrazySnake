@@ -16,7 +16,7 @@ public class Controlador implements WindowListener, ActionListener, KeyListener
 	Ranking ranking = new Ranking();
 	Tablero tablero = new Tablero();
 	int cerrar = 0;
-	boolean closing = true;
+	//boolean closing = true;
 
 	public Controlador(MenuPrincipal p, Modelo m)
 	{
@@ -189,16 +189,8 @@ public class Controlador implements WindowListener, ActionListener, KeyListener
 	@Override
 	public void windowDeactivated(WindowEvent e) {}
 	@Override
-	public void keyTyped(KeyEvent e)
-	{
-		// TODO Auto-generated method stub
-		
-	}
+	public void keyTyped(KeyEvent e){}
 	
 	@Override
-	public void keyReleased(KeyEvent e)
-	{
-		// TODO Auto-generated method stub
-		
-	}
+	public void keyReleased(KeyEvent e){}
 }
