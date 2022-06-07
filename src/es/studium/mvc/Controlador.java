@@ -56,7 +56,7 @@ public class Controlador implements WindowListener, ActionListener
 		else if (evento.getSource().equals(menuPrincipal.btnAyuda))
 		{
 			try {
-				Runtime.getRuntime().exec("hh.exe AyudaJuego.chm");
+				Runtime.getRuntime().exec("hh.exe ficheroAyuda.chm");
 			}
 			
 			catch (IOException e)
