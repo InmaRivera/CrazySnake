@@ -16,7 +16,6 @@ public class Controlador implements WindowListener, ActionListener, KeyListener
 	Ranking ranking = new Ranking();
 	Tablero tablero = new Tablero();
 	int cerrar = 0;
-	//boolean closing = true;
 
 	public Controlador(MenuPrincipal p, Modelo m)
 	{
@@ -76,7 +75,7 @@ public class Controlador implements WindowListener, ActionListener, KeyListener
 			cerrar = 2;
 
 			try {
-				Runtime.getRuntime().exec("hh.exe ficheroAyuda.chm");
+				Runtime.getRuntime().exec("hh.exe Ayuda.chm");
 			}
 			
 			catch (IOException e)
