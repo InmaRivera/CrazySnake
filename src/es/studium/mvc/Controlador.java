@@ -97,7 +97,7 @@ public class Controlador implements WindowListener, ActionListener, KeyListener
 		if(ke.getKeyCode()==37)//37 tecla izquierda
 		{
 			//Indicamos hasta donde llegar serpiente a la izquierda
-			if(tablero.posXser>=1)
+			if(tablero.posXser>=4)
 			{
 				tablero.posXser--;
 				tablero.cambiarDireccion(0);
@@ -108,17 +108,12 @@ public class Controlador implements WindowListener, ActionListener, KeyListener
 		{
 			//indicamos hasta donde llegar serpiente para no salir del tablero arriba, que quede por debajo del panel
 
-			if(tablero.posYser>=70)
+			if(tablero.posYser>=100)
 			{
 				tablero.posYser--;
 				//para que serpiente cambie de direccion
 				tablero.cambiarDireccion(2);
 			}
-
-			//if(tablero.posYser>=70)
-			//{
-				//tablero.posYser--;
-			//}
 
 		}
 		// Pulsamos cursor derecha
@@ -135,7 +130,7 @@ public class Controlador implements WindowListener, ActionListener, KeyListener
 		else if(ke.getKeyCode()==40)
 		{
 			//indicamos hasta donde llegar serpiente para no salir del tablero abajo
-			if(tablero.posYser<=598)
+			if(tablero.posYser<=590)
 			{
 				tablero.posYser++;
 				tablero.cambiarDireccion(3);
@@ -146,9 +141,7 @@ public class Controlador implements WindowListener, ActionListener, KeyListener
 		{
 			
 			tablero.puntos ++;
-			
 			tablero.area.setText(" " + tablero.puntos);//mostramos los puntos en area
-			tablero.area2.setText(" " + tablero.vidas);//mostramos la vida en area
 			System.out.print("Acertaste!!!!");
 			System.out.println("Llevas " + tablero.puntos + " puntos.");
 			//cambiamos la manzana de posición
@@ -158,12 +151,13 @@ public class Controlador implements WindowListener, ActionListener, KeyListener
 			
 		}
 		//Fin del juego, cuando se salga del tablero
-		if((tablero.posXser == 1)||(tablero.posXser==70)||(tablero.posXser==700)||(tablero.posXser==598))
+		if((tablero.posXser == 4)||(tablero.posXser==100)||(tablero.posXser==700)||(tablero.posXser==590))
 		{			
 			//Mostramos el mensaje de acabado
 			tablero.mostrarDialogo();
 			//Eliminamos la vida
 			tablero.vidas--;
+			tablero.area2.setText(" " + tablero.vidas);//mostramos la vida en area
 			
 		}
 		//Volvemos a pintar
@@ -197,14 +191,8 @@ public class Controlador implements WindowListener, ActionListener, KeyListener
 			//ocultar ranking
 			ranking.ocultarRanking();
 		}		
-		/*if(cerrar = 2)
-		{
-			Ayuda.ocultarAyda();
-		}*/
 		else 
 		{	
-			//1 para cerrar Menú principal después de usar las demás ventanas
-			//Conseguido
 			System.exit(1);
 		}
 	}
