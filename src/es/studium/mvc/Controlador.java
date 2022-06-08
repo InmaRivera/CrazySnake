@@ -98,7 +98,7 @@ public class Controlador implements WindowListener, ActionListener, KeyListener
 		if(ke.getKeyCode()==37)//37 tecla izquierda
 		{
 			//Indicamos hasta donde llegar serpiente a la izquierda
-			if(tablero.posXser>=7)
+			if(tablero.posXser>=1)
 			{
 				tablero.posXser--;
 				tablero.cambiarDireccion(0);
@@ -126,7 +126,7 @@ public class Controlador implements WindowListener, ActionListener, KeyListener
 		else if(ke.getKeyCode()==39)
 		{
 			//indicamos hasta donde llegar serpiente para no salir del tablero derecha
-			if(tablero.posXser<=680)
+			if(tablero.posXser<=700)
 			{
 				tablero.posXser++;
 				tablero.cambiarDireccion(1);
@@ -136,7 +136,7 @@ public class Controlador implements WindowListener, ActionListener, KeyListener
 		else if(ke.getKeyCode()==40)
 		{
 			//indicamos hasta donde llegar serpiente para no salir del tablero abajo
-			if(tablero.posYser<=580)
+			if(tablero.posYser<=598)
 			{
 				tablero.posYser++;
 				tablero.cambiarDireccion(3);
@@ -159,11 +159,13 @@ public class Controlador implements WindowListener, ActionListener, KeyListener
 			
 		}
 		//Fin del juego, cuando se salga del tablero
-		if((tablero.posXser == 7)||(tablero.posXser==70)||(tablero.posXser==680)||(tablero.posXser==580))
-		{
-			tablero.vidas--;
+		if((tablero.posXser == 1)||(tablero.posXser==70)||(tablero.posXser==700)||(tablero.posXser==598))
+		{			
 			//Mostramos el mensaje de acabado
 			tablero.mostrarDialogo();
+			//Eliminamos la vida
+			tablero.vidas--;
+			
 		}
 		//Volvemos a pintar
 		tablero.repaint(); // --> update() --> paint()
