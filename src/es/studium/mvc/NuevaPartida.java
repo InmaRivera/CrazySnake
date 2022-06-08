@@ -32,6 +32,7 @@ public class NuevaPartida extends Frame
 		add(lblNombre);
 		add(txtNombre);
 		add(btnAceptar);
+		//INSERT INTO `crazysnake`.`jugadores` (`nombreJugador`, `puntosJugador`) VALUES ('Kira', '3');
 		setLocationRelativeTo(null); // Centrar
 	}
 	public void mostrarNuevaPartida()

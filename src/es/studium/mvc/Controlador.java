@@ -60,9 +60,10 @@ public class Controlador implements WindowListener, ActionListener, KeyListener
 		{
 			//conectar con base de datos para mostrar información del ranking
 			modelo.conectar();
-			// String contenido = modelo.consularRanking();
+			String resultado = modelo.consularRanking();
 			modelo.desconectar();
 			// Añadir el contenido al TextArea
+			ranking.txtSnake.setText(resultado);
 			//abrir ventana del ranking
 			ranking.mostrarRanking();
 			cerrar = 2;
