@@ -52,4 +52,7 @@ public class NuevaPartida extends Frame
 		g.drawImage(imagen,4,23,this);
 	}
 
+	public String getNombre() {
+		return txtNombre.getText();
+	}
 }

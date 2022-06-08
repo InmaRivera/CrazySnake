@@ -29,6 +29,7 @@ public class Tablero extends Frame
 	Label img2 = new Label("                                                                                                                                                       ");
 	Label img3 = new Label(" ");
 	Toolkit herramienta;
+	String nombreJugador;
 	// Las coordenadas de la serpiente
 	int posXser, posYser;
 	//El tamaño
@@ -175,5 +176,11 @@ public class Tablero extends Frame
 		dlgFeedback.setLocationRelativeTo(null);
 		dlgFeedback.setVisible(true);
 
+	}
+	public void setNombre(String nombreJugador) {
+		this.nombreJugador = nombreJugador;
+}
+	public String getNombre() {
+		return nombreJugador;
 	}
 }
