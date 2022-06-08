@@ -48,22 +48,24 @@ public class Modelo
 	}
 	
 	
-	public void consularRanking()
+	public String consularRanking()
 	{
+		String resultado = "";
 		// Realizar la consulta
 		try {
 			stmt = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
 			rs = stmt.executeQuery("SELECT * FROM jugadores");
 			// Para averiguar el número de registros obtenidos
 			while (rs.next()) {
-				contador++;
+				resultado =resultado+rs.getInt("idJugador")+
+						" "+rs.getString("nombreJugador"+", "+rs.getInt("puntosJugador")+"\n");
 			}
-			rs.first();
 
 		} catch (SQLException e) {
 			System.out.println("Error en la sentencia SQL");
 		}
 
+		return resultado;
 	}
 	
 	
