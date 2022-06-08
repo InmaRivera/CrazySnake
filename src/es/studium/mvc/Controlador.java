@@ -58,6 +58,12 @@ public class Controlador implements WindowListener, ActionListener, KeyListener
 		}
 		else if (evento.getSource().equals(menuPrincipal.btnTop))
 		{
+			//conectar con base de datos para mostrar información del ranking
+			modelo.conectar();
+			// String contenido = modelo.consularRanking();
+			modelo.desconectar();
+			// Añadir el contenido al TextArea
+			//abrir ventana del ranking
 			ranking.mostrarRanking();
 			cerrar = 2;
 		}
