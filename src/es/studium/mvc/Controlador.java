@@ -55,6 +55,7 @@ public class Controlador implements WindowListener, ActionListener, KeyListener
 		{
 			//Función de los botones del Tablero
 			tablero.mostrarTablero();
+			tablero.setNombre(nuevaPartida.getNombre());
 			cerrar = 2;
 		}
 		else if (evento.getSource().equals(menuPrincipal.btnTop))
@@ -188,7 +189,10 @@ public class Controlador implements WindowListener, ActionListener, KeyListener
 		 if(cerrar == 2)
 		{
 			//se cierra ventana de juego
-			tablero.ocultarTablero();			
+			tablero.ocultarTablero();
+			modelo.conectar();
+			modelo.finPartida(tablero.getNombre(), tablero.puntos);
+			modelo.desconectar();
 		}
 		if(cerrar == 2)
 		{
