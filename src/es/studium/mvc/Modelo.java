@@ -78,29 +78,21 @@ public class Modelo
 	{
 		
 		try {
-			
-			stmt.executeUpdate("INSERT INTO `crazysnake`.`jugadores` (`idJugador`, `nombreJugador`, `puntosJugador`) VALUES ('', 'nombre', '')");
-			System.out.println();
+
+			stmt = con.createStatement();
+			stmt.executeUpdate("INSERT INTO crazysnake.jugadores (nombreJugador, puntosJugador) VALUES ('" + nombre + "',  + " + puntuacion + ")");
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-		
-	}
-	
-	
-	
-	
-	
-	
+		}	
+	}	
 	
 	public void desconectar()
 	{
 
 		try
-		{
-			
-			
+		{		
 			if(con!=null)
 			{
 				con.close();
@@ -110,8 +102,6 @@ public class Modelo
 		{
 
 		}
-
-
 	}
 	
 }
