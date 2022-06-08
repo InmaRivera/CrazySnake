@@ -58,10 +58,12 @@ public class Modelo
 			// Para averiguar el número de registros obtenidos
 		
 			int i=0;
+			
 			//para poder mostrar los 10 primeros
 			while (rs.next() && (i<10)) {
 				resultado =resultado+rs.getString("nombreJugador")+
 						", "+rs.getInt("puntosJugador")+"\n";
+				i++;
 			}
 
 		} catch (SQLException e) {
