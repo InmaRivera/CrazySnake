@@ -53,12 +53,17 @@ public class Modelo
 		String resultado = "";
 		// Realizar la consulta
 		try {
-			stmt = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+			stmt = con.createStatement();
 			rs = stmt.executeQuery("SELECT * FROM jugadores");
 			// Para averiguar el número de registros obtenidos
-			while (rs.next()) {
-				resultado =resultado+rs.getInt("idJugador")+
-						" "+rs.getString("nombreJugador"+", "+rs.getInt("puntosJugador")+"\n");
+		
+			int i=0;
+			
+			//para poder mostrar los 10 primeros
+			while (rs.next() && (i<10)) {
+				resultado =resultado+rs.getString("nombreJugador")+
+						", "+rs.getInt("puntosJugador")+"\n";
+				i++;
 			}
 
 		} catch (SQLException e) {
@@ -76,6 +81,7 @@ public class Modelo
 
 			stmt = con.createStatement();
 			stmt.executeUpdate("INSERT INTO crazysnake.jugadores (nombreJugador, puntosJugador) VALUES ('" + nombre + "',  + " + puntuacion + ")");
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

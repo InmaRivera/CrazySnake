@@ -32,6 +32,7 @@ public class Controlador implements WindowListener, ActionListener, KeyListener
 		tablero.addWindowListener(this);
 		tablero.addKeyListener(this);
 		nuevaPartida.addWindowListener(this);
+		tablero.dlgFeedback.addWindowListener(this);
 
 	}
 	
@@ -60,9 +61,10 @@ public class Controlador implements WindowListener, ActionListener, KeyListener
 		{
 			//conectar con base de datos para mostrar información del ranking
 			modelo.conectar();
-			// String contenido = modelo.consularRanking();
+			String resultado = modelo.consularRanking();
 			modelo.desconectar();
 			// Añadir el contenido al TextArea
+			ranking.txtSnake.setText(resultado);
 			//abrir ventana del ranking
 			ranking.mostrarRanking();
 			cerrar = 2;
@@ -94,9 +96,8 @@ public class Controlador implements WindowListener, ActionListener, KeyListener
 		//Si pulsamos a la izquierda
 		if(ke.getKeyCode()==37)//37 tecla izquierda
 		{
-			//tablero.posXser--;
 			//Indicamos hasta donde llegar serpiente a la izquierda
-			if(tablero.posXser>=8)
+			if(tablero.posXser>=7)
 			{
 				tablero.posXser--;
 				tablero.cambiarDireccion(0);
@@ -140,10 +141,10 @@ public class Controlador implements WindowListener, ActionListener, KeyListener
 				tablero.cambiarDireccion(3);
 			}
 		}
-		// Comprobamos si las coordenadas del ratón están entre las del cuadrado
-		if((tablero.posXser<=tablero.posXman)&&(tablero.posXman<=tablero.posXser+10)&&(tablero.posYser<=tablero.posYman)&&(tablero.posYman<=tablero.posYser+10))
+		// Comprobamos si las coordenadas del ratón están entre las de la serpiente
+		if((tablero.posXser<=tablero.posXman)&&(tablero.posXman<=tablero.posXser+20)&&(tablero.posYser<=tablero.posYman)&&(tablero.posYman<=tablero.posYser+20))
 		{
-			//vidas++;
+			
 			tablero.puntos ++;
 			
 			tablero.area.setText(" " + tablero.puntos);//mostramos los puntos en area
@@ -155,6 +156,13 @@ public class Controlador implements WindowListener, ActionListener, KeyListener
 			//Aumentamos la serpiente cuando come una manzana
 			tablero.dimension +=10;
 			
+		}
+		//Fin del juego, cuando se salga del tablero
+		if((tablero.posXser == 7)||(tablero.posXser==70)||(tablero.posXser==680)||(tablero.posXser==580))
+		{
+			tablero.vidas--;
+			//Mostramos el mensaje de acabado
+			tablero.mostrarDialogo();
 		}
 		//Volvemos a pintar
 		tablero.repaint(); // --> update() --> paint()

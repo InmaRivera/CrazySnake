@@ -1,6 +1,7 @@
 package es.studium.mvc;
 
 import java.awt.Color;
+import java.awt.Dialog;
 import java.awt.FlowLayout;
 import java.awt.Frame;
 import java.awt.Graphics;
@@ -14,6 +15,9 @@ import java.util.Random;
 public class Tablero extends Frame 
 {
 	private static final long serialVersionUID = 1L;
+	//dialog para acabar
+	Dialog dlgFeedback = new Dialog (this, "Feedback", true);
+	Label lblMensaje = new Label ("GAME OVER");
 	//Creamos los objetos
 	Panel panel= new Panel();
 	//3 Tamaño del area
@@ -55,7 +59,7 @@ public class Tablero extends Frame
 		setResizable(false);// no permitir redimensionar
 		setBackground(Color.black);
 		setLocationRelativeTo(null);//fijar que la ventana salga
-		
+
 		//posición inicial serpiente
 		posXser = 350;
 		posYser = 360;
@@ -65,7 +69,7 @@ public class Tablero extends Frame
 		obtenerPosicionManzana();
 		//Agregamos imagen al panel
 		panel.add(img);
-		
+
 		//Agregamos el area al panel
 		panel.add(area);
 		//Para mostrar los puntos en el txtArea
@@ -77,21 +81,21 @@ public class Tablero extends Frame
 		area2.setText(" " + vidas);
 		//Agregamos imagen al panel
 		panel.add(img3);
-		
+
 
 		//Añadimos las herramientas
 		herramienta = getToolkit();
 		// Especificar la ruta de la imagen
 		imagen = herramienta.getImage("img\\Captura3.PNG");
 		imagen2 = herramienta.getImage("img\\Captura.PNG");
-		
+
 		area.setEnabled(false);//Para que no se pueda escribir
 		area2.setEnabled(false);
 		panel.setBackground(Color.CYAN);
-	
+
 		//Agregamos panel.
 		add(panel);
-		
+
 	}
 	public void obtenerPosicionManzana()
 	{
@@ -103,7 +107,7 @@ public class Tablero extends Frame
 	{//mostrar la ventana
 		setVisible(true);		
 	}
-	
+
 	public void ocultarTablero()
 	{
 		//ocultarla
@@ -115,47 +119,61 @@ public class Tablero extends Frame
 		// Dibujar la imagen
 		g.drawImage(imagen ,660,36,this);
 		g.drawImage(imagen2,6,36,this);
-		
+
 		//Damos color primero a serpiente
 		g.setColor(new Color(19,119,61));
 		//creamos el rectángulo para serpiente
 		g.fillRect(posXser, posYser, dimension, 10);
-		
+
 		//creamos el circulo de manzana y le damos tamaño
 		g.setColor(Color.red);
 		g.fillOval(posXman, posYman, 10, 10);
-		//Damos movilidad a la serpiente
-		switch(direccion)
+		if(vidas!=0)
 		{
-		case 0:
-			posXser--;
-			break;
-		case 1:
-			posXser++;
-			break;
-		case 2:
-			posYser--;
-			break;
-		case 3:
-			posYser++;
-			break;
+			//Damos movilidad a la serpiente
+			switch(direccion)
+			{
+			case 0:
+				posXser--;
+				break;
+			case 1:
+				posXser++;
+				break;
+			case 2:
+				posYser--;
+				break;
+			case 3:
+				posYser++;
+				break;
+			}
+			try
+			{
+				//Velocidad serpiente
+				Thread.sleep(100);
+			} catch (InterruptedException e)
+			{
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			repaint();
 		}
-		try
-		{
-			//Velocidad serpiente
-			Thread.sleep(100);
-		} catch (InterruptedException e)
-		{
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		repaint();
 	}
 	public void cambiarDireccion(int i)
 	{
 		//cambiamos direccion de la serpiente al pulsar
 		direccion = i;
 		repaint();
-		
+
+	}
+	public void mostrarDialogo()
+	{
+		// ventana del mensaje
+		dlgFeedback.setTitle("GAME OVER");
+		dlgFeedback.setLayout(new FlowLayout());
+		dlgFeedback.setSize(200,150);
+		dlgFeedback.add(lblMensaje);
+		dlgFeedback.setLocationRelativeTo(null);
+		dlgFeedback.setVisible(true);
+
 	}
 }
