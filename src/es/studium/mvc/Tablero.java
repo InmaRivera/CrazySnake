@@ -1,7 +1,7 @@
 package es.studium.mvc;
+
 import java.awt.Color;
 import java.awt.FlowLayout;
-import java.awt.Font;
 import java.awt.Frame;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -15,6 +15,8 @@ public class Tablero extends Frame
 {
 	private static final long serialVersionUID = 1L;
 	//Creamos los objetos
+	Panel panel= new Panel();
+	//3 Tamaño del area
 	TextField area= new TextField(3);
 	TextField area2= new TextField(3);
 	Image imagen;
@@ -33,12 +35,14 @@ public class Tablero extends Frame
 	int vidas = 1;
 	//Los puntos
 	int puntos;
-	//Estilos Fuentes
-	Font font = new Font("Colonna MT", Font.TRUETYPE_FONT, 20);
 	//coordenadas de manzana
 	int posXman, posYman;
-	//coordenadas de las letras
-	int posX, posY;
+	int direccion; 
+	//0 a izq
+	//1 derecha
+	//2 arriba
+	//3 Abajo
+
 	//random para la manzana
 	Random rnd = new Random();
 
@@ -51,9 +55,6 @@ public class Tablero extends Frame
 		setResizable(false);// no permitir redimensionar
 		setBackground(Color.black);
 		setLocationRelativeTo(null);//fijar que la ventana salga
-	
-		Panel panel= new Panel();
-		panel.setLayout(new FlowLayout());
 		
 		//posición inicial serpiente
 		posXser = 350;
@@ -62,16 +63,19 @@ public class Tablero extends Frame
 		dimension = 10;
 		//Obtenemos la posición aleatoria de las manzanas
 		obtenerPosicionManzana();
+		//Agregamos imagen al panel
 		panel.add(img);
 		
+		//Agregamos el area al panel
 		panel.add(area);
 		//Para mostrar los puntos en el txtArea
-		area.setText("Puntos: " + puntos);
+		area.setText(" " + puntos);
 		//mostramos el panel
 		panel.add(img2);
 		panel.add(area2);
 		//Para mostrar las vidas en el txtArea
-		area2.setText("Vidas: " + vidas);
+		area2.setText(" " + vidas);
+		//Agregamos imagen al panel
 		panel.add(img3);
 		
 
@@ -84,7 +88,7 @@ public class Tablero extends Frame
 		area.setEnabled(false);//Para que no se pueda escribir
 		area2.setEnabled(false);
 		panel.setBackground(Color.CYAN);
-		panel.setSize(40, 560);
+	
 		//Agregamos panel.
 		add(panel);
 		
@@ -108,14 +112,6 @@ public class Tablero extends Frame
 
 	public void paint(Graphics g)
 	{
-		//posicionar letras de puntos y vidas
-		g.drawRect(posX, posY, 20, 20);
-		g.setFont(font);
-		/*Damos color a las letras y posicion
-		g.setColor(Color.green);
-		g.drawString("Puntos: " + puntos, 10, 38);
-		g.drawString ("Vidas: " + vidas, 550, 38);*/
-		
 		// Dibujar la imagen
 		g.drawImage(imagen ,660,36,this);
 		g.drawImage(imagen2,6,36,this);
@@ -128,6 +124,38 @@ public class Tablero extends Frame
 		//creamos el circulo de manzana y le damos tamaño
 		g.setColor(Color.red);
 		g.fillOval(posXman, posYman, 10, 10);
-
+		//Damos movilidad a la serpiente
+		switch(direccion)
+		{
+		case 0:
+			posXser--;
+			break;
+		case 1:
+			posXser++;
+			break;
+		case 2:
+			posYser--;
+			break;
+		case 3:
+			posYser++;
+			break;
+		}
+		try
+		{
+			//Velocidad serpiente
+			Thread.sleep(100);
+		} catch (InterruptedException e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		repaint();
+	}
+	public void cambiarDireccion(int i)
+	{
+		//cambiamos direccion de la serpiente al pulsar
+		direccion = i;
+		repaint();
+		
 	}
 }

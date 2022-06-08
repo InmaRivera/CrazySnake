@@ -34,6 +34,7 @@ public class Controlador implements WindowListener, ActionListener, KeyListener
 		nuevaPartida.addWindowListener(this);
 
 	}
+	
 	@Override
 	public void actionPerformed(ActionEvent evento)
 	{
@@ -87,11 +88,12 @@ public class Controlador implements WindowListener, ActionListener, KeyListener
 		//Si pulsamos a la izquierda
 		if(ke.getKeyCode()==37)//37 tecla izquierda
 		{
-			tablero.posXser--;
-			//Indicamos 
-			if(tablero.posXser>=-800)
+			//tablero.posXser--;
+			//Indicamos hasta donde llegar serpiente a la izquierda
+			if(tablero.posXser>=8)
 			{
 				tablero.posXser--;
+				tablero.cambiarDireccion(0);
 			}
 		}
 		// Pulsamos cursor arriba
@@ -101,6 +103,8 @@ public class Controlador implements WindowListener, ActionListener, KeyListener
 			if(tablero.posYser>=70)
 			{
 				tablero.posYser--;
+				//para que serpiente cambie de direccion
+				tablero.cambiarDireccion(2);
 			}
 		}
 		// Pulsamos cursor derecha
@@ -110,6 +114,7 @@ public class Controlador implements WindowListener, ActionListener, KeyListener
 			if(tablero.posXser<=680)
 			{
 				tablero.posXser++;
+				tablero.cambiarDireccion(1);
 			}
 		}
 		// Pulsamos cursor abajo
@@ -119,6 +124,7 @@ public class Controlador implements WindowListener, ActionListener, KeyListener
 			if(tablero.posYser<=580)
 			{
 				tablero.posYser++;
+				tablero.cambiarDireccion(3);
 			}
 		}
 		// Comprobamos si las coordenadas del ratón están entre las del cuadrado
@@ -127,8 +133,8 @@ public class Controlador implements WindowListener, ActionListener, KeyListener
 			//vidas++;
 			tablero.puntos ++;
 			
-			tablero.area.setText("Puntos: " + tablero.puntos);
-			tablero.area2.setText("Vidas: " + tablero.vidas);
+			tablero.area.setText(" " + tablero.puntos);//mostramos los puntos en area
+			tablero.area2.setText(" " + tablero.vidas);//mostramos la vida en area
 			System.out.print("Acertaste!!!!");
 			System.out.println("Llevas " + tablero.puntos + " puntos.");
 			//cambiamos la manzana de posición

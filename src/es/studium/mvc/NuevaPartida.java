@@ -22,7 +22,7 @@ public class NuevaPartida extends Frame
 	{
 		//Configuración Pantalla
 		setSize(200, 150); // Tamaño: Ancho x Alto
-		setResizable(false); // No permitir redimensión
+		//setResizable(false); // No permitir redimensión
 		setLayout(new FlowLayout()); 
 		herramienta = getToolkit();
 		// Especificar la ruta de la imagen
