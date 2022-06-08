@@ -108,7 +108,6 @@ public class Controlador implements WindowListener, ActionListener, KeyListener
 		else if(ke.getKeyCode()==38)//tecla arriba
 		{
 			//indicamos hasta donde llegar serpiente para no salir del tablero arriba, que quede por debajo del panel
-
 			if(tablero.posYser>=100)
 			{
 				tablero.posYser--;
@@ -121,7 +120,7 @@ public class Controlador implements WindowListener, ActionListener, KeyListener
 		else if(ke.getKeyCode()==39)
 		{
 			//indicamos hasta donde llegar serpiente para no salir del tablero derecha
-			if(tablero.posXser<=700)
+			if(tablero.posXser<=689)
 			{
 				tablero.posXser++;
 				tablero.cambiarDireccion(1);
@@ -131,7 +130,7 @@ public class Controlador implements WindowListener, ActionListener, KeyListener
 		else if(ke.getKeyCode()==40)
 		{
 			//indicamos hasta donde llegar serpiente para no salir del tablero abajo
-			if(tablero.posYser<=590)
+			if(tablero.posYser<=580)
 			{
 				tablero.posYser++;
 				tablero.cambiarDireccion(3);
@@ -152,7 +151,7 @@ public class Controlador implements WindowListener, ActionListener, KeyListener
 			
 		}
 		//Fin del juego, cuando se salga del tablero
-		if((tablero.posXser == 4)||(tablero.posXser==100)||(tablero.posXser==700)||(tablero.posXser==590))
+		if((tablero.posXser == 4)||(tablero.posXser==100)||(tablero.posXser==689)||(tablero.posXser==580))
 		{			
 			//Mostramos el mensaje de acabado
 			tablero.mostrarDialogo();
