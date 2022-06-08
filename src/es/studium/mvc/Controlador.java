@@ -98,10 +98,10 @@ public class Controlador implements WindowListener, ActionListener, KeyListener
 		else if(ke.getKeyCode()==38)//tecla arriba
 		{
 			//indicamos hasta donde llegar serpiente para no salir del tablero arriba, que quede por debajo del panel
-			if(tablero.posYser>=70)
-			{
-				tablero.posYser--;
-			}
+			//if(tablero.posYser>=70)
+			//{
+				//tablero.posYser--;
+			//}
 		}
 		// Pulsamos cursor derecha
 		else if(ke.getKeyCode()==39)
