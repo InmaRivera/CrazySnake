@@ -168,7 +168,7 @@ public class Tablero extends Frame
 	}
 	public void mostrarDialogo()
 	{
-		// ventana del mensaje
+		// ventana del mensaje de fin de juego
 		dlgFeedback.setTitle("GAME OVER");
 		dlgFeedback.setLayout(new FlowLayout());
 		dlgFeedback.setSize(200,150);
