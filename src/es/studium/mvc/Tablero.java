@@ -131,7 +131,7 @@ public class Tablero extends Frame
 		g.fillOval(posXman, posYman, 10, 10);
 		if(vidas!=0)
 		{
-			//Damos movilidad a la serpiente
+			//Damos movilidad a la serpiente automáticamente
 			switch(direccion)
 			{
 			case 0:

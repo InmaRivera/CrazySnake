@@ -54,9 +54,10 @@ public class Controlador implements WindowListener, ActionListener, KeyListener
 		else if(evento.getSource().equals(nuevaPartida.btnAceptar))
 		{
 			//Función de los botones del Tablero
+			nuevaPartida.ocultarNuevaPartida();
 			tablero.mostrarTablero();
 			tablero.setNombre(nuevaPartida.getNombre());
-			cerrar = 2;
+			cerrar = 4;
 		}
 		else if (evento.getSource().equals(menuPrincipal.btnTop))
 		{
@@ -68,7 +69,7 @@ public class Controlador implements WindowListener, ActionListener, KeyListener
 			ranking.txtSnake.setText(resultado);
 			//abrir ventana del ranking
 			ranking.mostrarRanking();
-			cerrar = 2;
+			cerrar = 3;
 		}
 		else if (evento.getSource().equals(menuPrincipal.btnAyuda))
 		{
@@ -177,29 +178,31 @@ public class Controlador implements WindowListener, ActionListener, KeyListener
 			menuPrincipal.ocultarMenuPrincipal();
 			
 		}
-		 if(cerrar == 2)
+		else if(cerrar == 2)
 		{
 			//Se cierra pantalla de nueva partida
 			nuevaPartida.ocultarNuevaPartida();
+			cerrar = 0;
 		}
-		 if(cerrar == 2)
+		else if(cerrar == 4)
 		{
 			//se cierra ventana de juego
 			tablero.ocultarTablero();
 			modelo.conectar();
 			modelo.finPartida(tablero.getNombre(), tablero.puntos);
 			modelo.desconectar();
+			cerrar = 0;
 		}
-		if(cerrar == 2)
+		else if(cerrar == 3)
 		{
 			//ocultar ranking
 			ranking.ocultarRanking();
+			cerrar = 0;
 		}		
 		else 
 		{	
-		
-			menuPrincipal.ocultarMenuPrincipal();
-			System.exit(1);
+			//menuPrincipal.ocultarMenuPrincipal();
+			System.exit(0);
 		}
 	}
 	@Override
