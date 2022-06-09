@@ -40,7 +40,7 @@ public class MenuPrincipal extends Frame
 
 	public void ocultarMenuPrincipal()
 	{
-		//setVisible(false);
+		setVisible(false);
 		System.exit(1);
 	}
 }

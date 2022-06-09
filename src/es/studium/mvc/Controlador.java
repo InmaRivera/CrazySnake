@@ -42,6 +42,7 @@ public class Controlador implements WindowListener, ActionListener, KeyListener
 		{
 			//Se cierra menu principal
 			menuPrincipal.ocultarMenuPrincipal();
+			cerrar = 0;
 		
 		}
 		else if(evento.getSource().equals(menuPrincipal.btnPartida))
@@ -85,7 +86,7 @@ public class Controlador implements WindowListener, ActionListener, KeyListener
 		}
 		else 
 		{
-			System.exit(1);
+			System.exit(0);
 		}
 	}
 	@Override
@@ -172,8 +173,9 @@ public class Controlador implements WindowListener, ActionListener, KeyListener
 		if ((cerrar == 1) && (menuPrincipal.isActive()))
 		{
 			//Para salir de menu principal
-			menuPrincipal.ocultarMenuPrincipal();
 			cerrar = 1;
+			menuPrincipal.ocultarMenuPrincipal();
+			
 		}
 		 if(cerrar == 2)
 		{
@@ -195,6 +197,8 @@ public class Controlador implements WindowListener, ActionListener, KeyListener
 		}		
 		else 
 		{	
+		
+			menuPrincipal.ocultarMenuPrincipal();
 			System.exit(1);
 		}
 	}
