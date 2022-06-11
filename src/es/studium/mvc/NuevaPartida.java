@@ -55,4 +55,5 @@ public class NuevaPartida extends Frame
 	public String getNombre() {
 		return txtNombre.getText();
 	}
+
 }

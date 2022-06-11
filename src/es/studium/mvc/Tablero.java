@@ -18,6 +18,7 @@ public class Tablero extends Frame
 	//dialog para acabar
 	Dialog dlgFeedback = new Dialog (this, "Feedback", true);
 	Label lblMensaje = new Label ("GAME OVER");
+
 	//Creamos los objetos
 	Panel panel= new Panel();
 	//3 Tamaño del area
@@ -59,7 +60,8 @@ public class Tablero extends Frame
 		setSize(700, 600); // Ancho x alto
 		setResizable(false);// no permitir redimensionar
 		setBackground(Color.black);
-		setLocationRelativeTo(null);//fijar que la ventana salga
+		setLocationRelativeTo(null);//fijar que la ventana 
+   
 
 		//posición inicial serpiente
 		posXser = 350;
@@ -177,6 +179,7 @@ public class Tablero extends Frame
 		dlgFeedback.setVisible(true);
 
 	}
+
 	public void setNombre(String nombreJugador) {
 		this.nombreJugador = nombreJugador;
 }
