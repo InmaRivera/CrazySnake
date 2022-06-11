@@ -18,7 +18,7 @@ public class Modelo
 	String password = "Studium2021;";
 
 	// Creamos una consulta a la base de datos
-	String sentencia = "SELECT nombreJugador, puntosJugador FROM jugadores where puntosJugador order by 2 desc;" ; 
+	String sentencia = "SELECT nombreJugador puntosJugador FROM jugadores where puntosJugador order by 2 desc;" ; 
 	
 	 
 	// Objeto donde se guarda la información de la consulta a la base de datos
