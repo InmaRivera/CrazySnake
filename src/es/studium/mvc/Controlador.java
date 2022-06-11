@@ -99,7 +99,7 @@ public class Controlador implements WindowListener, ActionListener, KeyListener
 		if(ke.getKeyCode()==37)//37 tecla izquierda
 		{
 			//Indicamos hasta donde llegar serpiente a la izquierda
-			if(tablero.posXser>=1)
+			if(tablero.posXser>=6)
 			{
 				tablero.posXser--;
 				tablero.cambiarDireccion(0);
@@ -131,13 +131,13 @@ public class Controlador implements WindowListener, ActionListener, KeyListener
 		else if(ke.getKeyCode()==40)
 		{
 			//indicamos hasta donde llegar serpiente para no salir del tablero abajo
-			if(tablero.posYser<=590)
+			if(tablero.posYser<=580)
 			{
 				tablero.posYser++;
 				tablero.cambiarDireccion(3);
 			}
 		}
-		// Comprobamos si las coordenadas del ratón están entre las de la serpiente
+		// Comprobamos si la serpiente coge la manzana
 		if((tablero.posXser<=tablero.posXman)&&(tablero.posXman<=tablero.posXser+20)&&(tablero.posYser<=tablero.posYman)&&(tablero.posYman<=tablero.posYser+20))
 		{
 			
@@ -152,13 +152,13 @@ public class Controlador implements WindowListener, ActionListener, KeyListener
 			
 		}
 		//Fin del juego, cuando se salga del tablero
-		if((tablero.posXser == 1)||(tablero.posXser==70)||(tablero.posXser==680)||(tablero.posXser==590))
+		if((tablero.posXser == 7)||(tablero.posXser==70)||(tablero.posXser==680)||(tablero.posXser==580))
 		{			
-			//Mostramos el mensaje de acabado
-			tablero.mostrarDialogo();
 			//Eliminamos la vida
 			tablero.vidas--;
 			tablero.area2.setText(" " + tablero.vidas);//mostramos la vida en area
+			//Mostramos el mensaje de acabado
+			tablero.mostrarDialogo();
 			
 		}
 		//Volvemos a pintar
