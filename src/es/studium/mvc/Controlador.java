@@ -53,11 +53,14 @@ public class Controlador implements WindowListener, ActionListener, KeyListener
 		}
 		else if(evento.getSource().equals(nuevaPartida.btnAceptar))
 		{
+			
+			
 			//Función de los botones del Tablero
 			nuevaPartida.ocultarNuevaPartida();
 			tablero.mostrarTablero();
 			tablero.setNombre(nuevaPartida.getNombre());
 			cerrar = 4;
+			
 		}
 		else if (evento.getSource().equals(menuPrincipal.btnTop))
 		{
@@ -93,8 +96,7 @@ public class Controlador implements WindowListener, ActionListener, KeyListener
 	@Override
 	public void keyPressed(KeyEvent ke)
 	{
-		
-		//Funcionalidad serpiente 
+			//Funcionalidad serpiente 
 		//Si pulsamos a la izquierda
 		if(ke.getKeyCode()==37)//37 tecla izquierda
 		{
@@ -137,22 +139,38 @@ public class Controlador implements WindowListener, ActionListener, KeyListener
 				tablero.cambiarDireccion(3);
 			}
 		}
-		// Comprobamos si la serpiente coge la manzana
-		if((tablero.posXser<=tablero.posXman)&&(tablero.posXman<=tablero.posXser+20)&&(tablero.posYser<=tablero.posYman)&&(tablero.posYman<=tablero.posYser+20))
+		//Comprobamos si la serpiente toca la manzana 
+		if(tablero.posXser==tablero.posXman||tablero.posYser==tablero.posYman||(tablero.posXser==tablero.posYman))
 		{
-			
+			//Sumamos puntos
 			tablero.puntos ++;
+			//cambiamos la manzana de posición
+			tablero.obtenerPosicionManzana();
 			tablero.area.setText(" " + tablero.puntos);//mostramos los puntos en area
 			System.out.print("Acertaste!!!!");
 			System.out.println("Llevas " + tablero.puntos + " puntos.");
+			//Aumentamos la serpiente cuando come una manzana
+			tablero.dimension +=10;
+		}
+
+		// Comprobamos si la serpiente coge la manzana
+		else if((tablero.posXser<=tablero.posXman)&&(tablero.posXman<=tablero.posXser+1)&&
+				(tablero.posYser<=tablero.posYman)&&(tablero.posYman<=tablero.posYser+1))
+		{
+			//sumamos puntos
+			tablero.puntos ++;
 			//cambiamos la manzana de posición
 			tablero.obtenerPosicionManzana();
+			tablero.area.setText(" " + tablero.puntos);//mostramos los puntos en area
+			System.out.print("Acertaste!!!!");
+			System.out.println("Llevas " + tablero.puntos + " puntos.");
 			//Aumentamos la serpiente cuando come una manzana
 			tablero.dimension +=10;
 			
 		}
+		
 		//Fin del juego, cuando se salga del tablero
-		if((tablero.posXser == 7)||(tablero.posXser==70)||(tablero.posXser==680)||(tablero.posXser==580))
+		if((tablero.posXser == 4)||(tablero.posXser==50)||(tablero.posXser==680)||(tablero.posXser==580))
 		{			
 			//Eliminamos la vida
 			tablero.vidas--;
