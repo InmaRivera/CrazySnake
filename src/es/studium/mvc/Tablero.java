@@ -65,7 +65,7 @@ public class Tablero extends Frame
 		posXser = 350;
 		posYser = 360;
 		//tamaño inicial serpiente
-		dimension = 10;
+		dimension = 20;
 		//Obtenemos la posición aleatoria de las manzanas
 		obtenerPosicionManzana();
 		//Agregamos imagen al panel
@@ -124,14 +124,14 @@ public class Tablero extends Frame
 		//Damos color primero a serpiente
 		g.setColor(new Color(19,119,61));
 		//creamos el rectángulo para serpiente
-		g.fillRect(posXser, posYser, dimension, 10);
+		g.fillRect(posXser, posYser, dimension, 20);
 
 		//creamos el circulo de manzana y le damos tamaño
 		g.setColor(Color.red);
-		g.fillOval(posXman, posYman, 10, 10);
+		g.fillOval(posXman, posYman, 20, 20);
 		if(vidas!=0)
 		{
-			//Damos movilidad a la serpiente
+			//Damos movilidad a la serpiente automáticamente
 			switch(direccion)
 			{
 			case 0:
@@ -150,7 +150,7 @@ public class Tablero extends Frame
 			try
 			{
 				//Velocidad serpiente
-				Thread.sleep(100);
+				Thread.sleep(10);
 			} catch (InterruptedException e)
 			{
 				// TODO Auto-generated catch block

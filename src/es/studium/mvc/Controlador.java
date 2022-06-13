@@ -42,6 +42,7 @@ public class Controlador implements WindowListener, ActionListener, KeyListener
 		{
 			//Se cierra menu principal
 			menuPrincipal.ocultarMenuPrincipal();
+			cerrar = 0;
 		
 		}
 		else if(evento.getSource().equals(menuPrincipal.btnPartida))
@@ -53,9 +54,10 @@ public class Controlador implements WindowListener, ActionListener, KeyListener
 		else if(evento.getSource().equals(nuevaPartida.btnAceptar))
 		{
 			//Función de los botones del Tablero
+			nuevaPartida.ocultarNuevaPartida();
 			tablero.mostrarTablero();
 			tablero.setNombre(nuevaPartida.getNombre());
-			cerrar = 2;
+			cerrar = 4;
 		}
 		else if (evento.getSource().equals(menuPrincipal.btnTop))
 		{
@@ -67,7 +69,7 @@ public class Controlador implements WindowListener, ActionListener, KeyListener
 			ranking.txtSnake.setText(resultado);
 			//abrir ventana del ranking
 			ranking.mostrarRanking();
-			cerrar = 2;
+			cerrar = 3;
 		}
 		else if (evento.getSource().equals(menuPrincipal.btnAyuda))
 		{
@@ -85,7 +87,7 @@ public class Controlador implements WindowListener, ActionListener, KeyListener
 		}
 		else 
 		{
-			System.exit(1);
+			System.exit(0);
 		}
 	}
 	@Override
@@ -97,7 +99,7 @@ public class Controlador implements WindowListener, ActionListener, KeyListener
 		if(ke.getKeyCode()==37)//37 tecla izquierda
 		{
 			//Indicamos hasta donde llegar serpiente a la izquierda
-			if(tablero.posXser>=1)
+			if(tablero.posXser>=6)
 			{
 				tablero.posXser--;
 				tablero.cambiarDireccion(0);
@@ -129,13 +131,13 @@ public class Controlador implements WindowListener, ActionListener, KeyListener
 		else if(ke.getKeyCode()==40)
 		{
 			//indicamos hasta donde llegar serpiente para no salir del tablero abajo
-			if(tablero.posYser<=590)
+			if(tablero.posYser<=580)
 			{
 				tablero.posYser++;
 				tablero.cambiarDireccion(3);
 			}
 		}
-		// Comprobamos si las coordenadas del ratón están entre las de la serpiente
+		// Comprobamos si la serpiente coge la manzana
 		if((tablero.posXser<=tablero.posXman)&&(tablero.posXman<=tablero.posXser+20)&&(tablero.posYser<=tablero.posYman)&&(tablero.posYman<=tablero.posYser+20))
 		{
 			
@@ -150,13 +152,13 @@ public class Controlador implements WindowListener, ActionListener, KeyListener
 			
 		}
 		//Fin del juego, cuando se salga del tablero
-		if((tablero.posXser == 1)||(tablero.posXser==70)||(tablero.posXser==680)||(tablero.posXser==590))
+		if((tablero.posXser == 7)||(tablero.posXser==70)||(tablero.posXser==680)||(tablero.posXser==580))
 		{			
-			//Mostramos el mensaje de acabado
-			tablero.mostrarDialogo();
 			//Eliminamos la vida
 			tablero.vidas--;
 			tablero.area2.setText(" " + tablero.vidas);//mostramos la vida en area
+			//Mostramos el mensaje de acabado
+			tablero.mostrarDialogo();
 			
 		}
 		//Volvemos a pintar
@@ -172,30 +174,35 @@ public class Controlador implements WindowListener, ActionListener, KeyListener
 		if ((cerrar == 1) && (menuPrincipal.isActive()))
 		{
 			//Para salir de menu principal
-			menuPrincipal.ocultarMenuPrincipal();
 			cerrar = 1;
+			menuPrincipal.ocultarMenuPrincipal();
+			
 		}
-		 if(cerrar == 2)
+		else if(cerrar == 2)
 		{
 			//Se cierra pantalla de nueva partida
 			nuevaPartida.ocultarNuevaPartida();
+			cerrar = 0;
 		}
-		 if(cerrar == 2)
+		else if(cerrar == 4)
 		{
 			//se cierra ventana de juego
 			tablero.ocultarTablero();
 			modelo.conectar();
 			modelo.finPartida(tablero.getNombre(), tablero.puntos);
 			modelo.desconectar();
+			cerrar = 0;
 		}
-		if(cerrar == 2)
+		else if(cerrar == 3)
 		{
 			//ocultar ranking
 			ranking.ocultarRanking();
+			cerrar = 0;
 		}		
 		else 
 		{	
-			System.exit(1);
+			//menuPrincipal.ocultarMenuPrincipal();
+			System.exit(0);
 		}
 	}
 	@Override

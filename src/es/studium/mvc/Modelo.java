@@ -18,8 +18,13 @@ public class Modelo
 	String password = "Studium2021;";
 
 	// Creamos una consulta a la base de datos
-	String sentencia = "SELECT nombreJugador puntosJugador FROM jugadores where puntosJugador order by 2 desc;" ; 
+
 	
+	
+
+	String sentencia = "SELECT nombreJugador, puntosJugador FROM jugadores order by 2 desc;" ; 
+
+
 	 
 	// Objeto donde se guarda la información de la consulta a la base de datos
 	ResultSet rs = null;
@@ -55,7 +60,7 @@ public class Modelo
 		// Realizar la consulta
 		try {
 			stmt = con.createStatement();
-			rs = stmt.executeQuery("SELECT * FROM jugadores");
+			rs = stmt.executeQuery(sentencia);
 			// Para averiguar el número de registros obtenidos
 		
 			int i=0;
