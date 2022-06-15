@@ -34,7 +34,7 @@ public class Controlador implements WindowListener, ActionListener, KeyListener
 		tablero.dlgFeedback.addWindowListener(this);
 
 	}
-	
+
 	@Override
 	public void actionPerformed(ActionEvent evento)
 	{
@@ -43,7 +43,7 @@ public class Controlador implements WindowListener, ActionListener, KeyListener
 			//Se cierra menu principal
 			menuPrincipal.ocultarMenuPrincipal();
 			cerrar = 0;
-		
+
 		}
 		else if(evento.getSource().equals(menuPrincipal.btnPartida))
 		{
@@ -53,14 +53,14 @@ public class Controlador implements WindowListener, ActionListener, KeyListener
 		}
 		else if(evento.getSource().equals(nuevaPartida.btnAceptar))
 		{
-			
-			
+
+
 			//Función de los botones del Tablero
 			nuevaPartida.ocultarNuevaPartida();
 			tablero.mostrarTablero();
 			tablero.setNombre(nuevaPartida.getNombre());
 			cerrar = 4;
-			
+
 		}
 		else if (evento.getSource().equals(menuPrincipal.btnTop))
 		{
@@ -82,7 +82,7 @@ public class Controlador implements WindowListener, ActionListener, KeyListener
 			try {
 				Runtime.getRuntime().exec("hh.exe Ayuda.chm");
 			}
-			
+
 			catch (IOException e)
 			{
 				e.printStackTrace();
@@ -96,7 +96,7 @@ public class Controlador implements WindowListener, ActionListener, KeyListener
 	@Override
 	public void keyPressed(KeyEvent ke)
 	{
-			//Funcionalidad serpiente 
+		//Funcionalidad serpiente 
 		//Si pulsamos a la izquierda
 		if(ke.getKeyCode()==37)//37 tecla izquierda
 		{
@@ -140,7 +140,7 @@ public class Controlador implements WindowListener, ActionListener, KeyListener
 			}
 		}
 		//Comprobamos si la serpiente toca la manzana 
-		if(tablero.posXser==tablero.posXman||tablero.posYser==tablero.posYman||(tablero.posXser==tablero.posYman))
+		if(tablero.posXser==tablero.posXman||tablero.posYser==tablero.posYman)
 		{
 			//Sumamos puntos
 			tablero.puntos ++;
@@ -166,22 +166,23 @@ public class Controlador implements WindowListener, ActionListener, KeyListener
 			System.out.println("Llevas " + tablero.puntos + " puntos.");
 			//Aumentamos la serpiente cuando come una manzana
 			tablero.dimension +=10;
-			
+
 		}
-		
+		//Volvemos a pintar
+		tablero.repaint(); // --> update() --> paint()
+
 		//Fin del juego, cuando se salga del tablero
-		if((tablero.posXser == 4)||(tablero.posXser==50)||(tablero.posXser==680)||(tablero.posXser==580))
+		if((tablero.posXser == 4)||(tablero.posXser==70)||(tablero.posXser==680)||(tablero.posXser==580))
 		{			
 			//Eliminamos la vida
 			tablero.vidas--;
 			tablero.area2.setText(" " + tablero.vidas);//mostramos la vida en area
 			//Mostramos el mensaje de acabado
 			tablero.mostrarDialogo();
-			
+
 		}
-		//Volvemos a pintar
-		tablero.repaint(); // --> update() --> paint()
-		
+
+
 	}
 	@Override
 	public void windowOpened(WindowEvent e){}
@@ -194,7 +195,7 @@ public class Controlador implements WindowListener, ActionListener, KeyListener
 			//Para salir de menu principal
 			cerrar = 1;
 			menuPrincipal.ocultarMenuPrincipal();
-			
+
 		}
 		else if(cerrar == 2)
 		{
@@ -235,7 +236,7 @@ public class Controlador implements WindowListener, ActionListener, KeyListener
 	public void windowDeactivated(WindowEvent e) {}
 	@Override
 	public void keyTyped(KeyEvent e){}
-	
+
 	@Override
 	public void keyReleased(KeyEvent e){}
 }
